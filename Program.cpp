@@ -67,6 +67,24 @@ int main() {
         dfx = df(x);
         ddfx = ddf(x);
 
-        
+        double den = (dfx*dfx) - (fx*ddfx);
+
+        if (den == 0) {
+            cout << "Error: Pembagi nol\n";
+            break;
+        }
+
+        x_new = x - (fx*dfx)/den;
+        Et = fabs((x_true - x_new) / x_true) * 100;
+
+        if (iteration = 1) Ea = 0;
+        else Ea = fabs((x_new - x) / x_new) * 100;
+
+        cout << iteration << " | " << x_new << " | " 
+        << f(x_new) << " | " << df(x_new) << " | " << ddf(x_new) 
+        << " | " << Et << " | " << Ea << " |\n";
+
+        x = x_new; iteration++;
     }
+    return 0;
 }
